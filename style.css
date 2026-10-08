@@ -1,0 +1,1519 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: #080608;
+    color: white;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.app {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+
+/* =========================================
+   SCREENS
+========================================= */
+
+.screen {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateX(100%);
+
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.77,0,.18,1),
+        visibility .9s;
+
+    overflow: hidden;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.screen.previous {
+    transform: translateX(-100%);
+}
+
+
+/* =========================================
+   SCREEN 1
+========================================= */
+
+#screen1 {
+    background:
+        radial-gradient(
+            circle at center,
+            #351d2d,
+            #090609 70%
+        );
+}
+
+.intro {
+    width: min(90%, 600px);
+    height: 100%;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.little-text {
+    position: absolute;
+    top: 16%;
+
+    font-size: 18px;
+
+    color: #f7dfb0;
+
+    letter-spacing: 1px;
+}
+
+.heart {
+    font-size: 180px;
+
+    color: #ed4d9c;
+
+    text-shadow:
+        0 0 15px #ff70b5,
+        0 0 40px #ff3e99,
+        0 0 90px rgba(255,50,150,.5);
+
+    animation: heartBeat 1.4s infinite;
+}
+
+@keyframes heartBeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+
+/* BOW */
+
+.bow {
+    position: absolute;
+
+    left: 18%;
+
+    bottom: 32%;
+
+    width: 100px;
+
+    font-size: 70px;
+
+    color: #e7c997;
+
+    transform: rotate(-35deg);
+}
+
+
+/* ARROW */
+/* =========================================
+   SMALL WHITE ARROW
+========================================= */
+
+.arrow {
+    position: absolute;
+    left: 20%;
+    top: 70%;
+
+    width: 125px;
+    height: 14px;
+
+    z-index: 100;
+
+    cursor: grab;
+    touch-action: none;
+
+    transform: rotate(-8deg);
+    transform-origin: left center;
+
+    background: transparent !important;
+
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
+
+    transition: transform 0.9s cubic-bezier(.15,.85,.25,1);
+}
+
+.arrow:active {
+    cursor: grabbing;
+}
+
+
+/* SHAFT */
+
+.arrow-shaft {
+    position: absolute;
+
+    left: 0;
+    top: 5px;
+
+    width: 100px;
+    height: 4px;
+
+    background: #ffffff !important;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 5px rgba(255,255,255,0.7);
+}
+
+
+/* HEAD */
+
+.arrow-head {
+    position: absolute;
+
+    right: 7px;
+    top: 0;
+
+    width: 0;
+    height: 0;
+
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 17px solid #ffffff !important;
+
+    filter: drop-shadow(0 0 4px rgba(255,255,255,0.7));
+}
+
+.pull-text {
+    position: absolute;
+
+    bottom: 17%;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: #fff;
+
+    opacity: .75;
+}
+
+
+/* =========================================
+   BIRTHDAY
+========================================= */
+
+.birthday-screen {
+
+    background:
+        radial-gradient(
+            circle at center,
+            #ed78aa,
+            #9b315f 55%,
+            #46152f
+        );
+}
+
+.birthday-content {
+    text-align: center;
+}
+
+.birthday-content > p {
+
+    font-size: 18px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+
+    animation: fadeUp 1s ease;
+}
+
+.birthday-content h1 {
+
+    font-size: clamp(50px, 11vw, 110px);
+
+    color: white;
+
+    text-shadow:
+        0 5px 20px rgba(0,0,0,.2);
+
+    animation: birthdayZoom 1.5s ease;
+}
+
+.birthday-content h2 {
+
+    margin-top: 20px;
+
+    font-size: clamp(18px, 4vw, 30px);
+
+    letter-spacing: 4px;
+
+    color: #ffe4a1;
+
+    animation: fadeUp 1.5s ease;
+}
+
+.gold-line {
+
+    width: 100px;
+    height: 3px;
+
+    margin: 20px auto;
+
+    background: #ffd76a;
+
+    box-shadow:
+        0 0 15px #ffd76a;
+}
+
+@keyframes birthdayZoom {
+
+    from {
+        opacity: 0;
+        transform: scale(.4);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   NEXT BUTTON
+========================================= */
+
+.next-btn {
+
+    margin-top: 35px;
+
+    padding: 13px 30px;
+
+    border: 1px solid rgba(255,255,255,.5);
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.12);
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition: .3s;
+}
+
+.next-btn:hover {
+
+    background: white;
+
+    color: #b83d73;
+
+    transform: scale(1.06);
+
+    box-shadow:
+        0 10px 30px rgba(255,255,255,.25);
+}
+
+
+/* =========================================
+   TREE SCREEN
+========================================= */
+
+.tree-screen {
+
+    background:
+        linear-gradient(
+            #120912,
+            #351328
+        );
+}
+
+.tree-content {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.tree-small {
+
+    position: absolute;
+
+    top: 10%;
+
+    left: 10%;
+
+    color: #eee;
+
+    font-size: 18px;
+}
+
+.tree-content h1 {
+
+    position: absolute;
+
+    top: 16%;
+
+    left: 10%;
+
+    font-size: clamp(30px, 6vw, 60px);
+
+    color: #fff;
+
+    text-shadow:
+        0 0 20px #ff72b6;
+}
+
+
+/* TREE */
+
+.tree {
+
+    position: absolute;
+
+    bottom: 10%;
+
+    width: 330px;
+
+    height: 400px;
+}
+
+
+/* TRUNK */
+
+.trunk {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 48%;
+
+    width: 25px;
+
+    height: 230px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #3c2118,
+            #74422b,
+            #3c2118
+        );
+
+    border-radius: 50%;
+
+    transform-origin: bottom;
+
+    animation: treeGrow 2s ease forwards;
+}
+
+@keyframes treeGrow {
+
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 230px;
+    }
+}
+
+
+/* BRANCHES */
+
+.branch {
+
+    position: absolute;
+
+    height: 13px;
+
+    background: #593321;
+
+    border-radius: 20px;
+
+    transform-origin: left center;
+
+    opacity: 0;
+
+    animation: branchGrow 1.5s ease forwards;
+}
+
+.branch1 {
+    width: 130px;
+    left: 48%;
+    bottom: 160px;
+    transform: rotate(-35deg);
+    animation-delay: .8s;
+}
+
+.branch2 {
+    width: 120px;
+    left: 45%;
+    bottom: 125px;
+    transform: rotate(35deg);
+    animation-delay: 1s;
+}
+
+.branch3 {
+    width: 100px;
+    left: 48%;
+    bottom: 190px;
+    transform: rotate(25deg);
+    animation-delay: 1.2s;
+}
+
+.branch4 {
+    width: 100px;
+    left: 45%;
+    bottom: 210px;
+    transform: rotate(-35deg);
+    animation-delay: 1.4s;
+}
+
+@keyframes branchGrow {
+
+    from {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* TREE HEARTS */
+
+.tree-heart {
+
+    position: absolute;
+
+    color: #ff69a9;
+
+    font-size: 35px;
+
+    opacity: 0;
+
+    animation: heartAppear .8s ease forwards;
+
+    text-shadow:
+        0 0 10px #ff69a9;
+}
+
+.h1 { left: 40px; top: 60px; animation-delay: 2s; }
+.h2 { left: 110px; top: 25px; animation-delay: 2.1s; }
+.h3 { left: 180px; top: 65px; animation-delay: 2.2s; }
+.h4 { left: 75px; top: 110px; animation-delay: 2.3s; }
+.h5 { left: 145px; top: 100px; animation-delay: 2.4s; }
+.h6 { left: 215px; top: 125px; animation-delay: 2.5s; }
+.h7 { left: 35px; top: 145px; animation-delay: 2.6s; }
+.h8 { left: 110px; top: 155px; animation-delay: 2.7s; }
+.h9 { left: 180px; top: 170px; animation-delay: 2.8s; }
+.h10 { left: 250px; top: 165px; animation-delay: 2.9s; }
+.h11 { left: 75px; top: 195px; animation-delay: 3s; }
+.h12 { left: 215px; top: 205px; animation-delay: 3.1s; }
+
+@keyframes heartAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================
+   WISHES
+========================================= */
+
+.wish-screen {
+
+    background:
+        radial-gradient(
+            circle,
+            #78375e,
+            #281020
+        );
+}
+
+.wish-card {
+
+    width: min(90%, 650px);
+
+    padding: 50px 30px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.4);
+}
+
+.wish-label {
+
+    color: #ffd76a;
+
+    letter-spacing: 5px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    margin-bottom: 15px;
+}
+
+.wish-card h1 {
+
+    font-size: clamp(25px, 7vw, 48px);
+
+    letter-spacing: 3px;
+}
+
+.wish-heart {
+
+    font-size: 55px;
+
+    color: #ff70b5;
+
+    animation: heartBeat 1.2s infinite;
+
+    margin: 10px;
+}
+
+.wish-text {
+
+    font-size: clamp(16px, 3vw, 21px);
+
+    line-height: 1.8;
+
+    color: #fff;
+
+    max-width: 550px;
+
+    margin: auto;
+}
+
+
+/* =========================================
+   CAKE
+========================================= */
+
+.cake-screen {
+
+    background:
+        radial-gradient(
+            circle at center,
+            #692b51,
+            #170b17
+        );
+}
+
+.cake-content {
+
+    text-align: center;
+}
+
+.cake-small {
+
+    font-family: Arial, sans-serif;
+
+    color: #ffd76a;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+}
+
+.cake-content h1 {
+
+    margin-top: 12px;
+
+    font-size: clamp(30px, 7vw, 55px);
+}
+
+.instruction {
+
+    margin-top: 10px;
+
+    color: #eee;
+}
+
+
+/* CAKE AREA */
+
+.cake-area {
+
+    width: 350px;
+    height: 300px;
+
+    position: relative;
+
+    margin: 20px auto;
+}
+
+
+/* CANDLES */
+
+.candles {
+
+    position: absolute;
+
+    top: 15px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 25px;
+
+    z-index: 5;
+}
+
+.candle {
+
+    width: 18px;
+
+    height: 75px;
+
+    position: relative;
+}
+
+.stick {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 18px;
+
+    height: 60px;
+
+    border-radius: 5px;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            #ff72aa 0 7px,
+            white 7px 13px
+        );
+}
+
+.flame {
+
+    position: absolute;
+
+    top: -25px;
+
+    width: 18px;
+
+    height: 28px;
+
+    background:
+        radial-gradient(
+            ellipse at bottom,
+            white,
+            #ffd34e 30%,
+            #ff782e 60%,
+            #ff3970
+        );
+
+    border-radius: 50% 50% 50% 50%;
+
+    box-shadow:
+        0 0 10px #ffd34e,
+        0 0 25px #ff792e;
+
+    animation: flame 0.6s infinite alternate;
+}
+
+@keyframes flame {
+
+    from {
+        transform: rotate(-5deg) scale(1);
+    }
+
+    to {
+        transform: rotate(5deg) scale(1.1);
+    }
+}
+
+.flame.off {
+
+    animation: flameOff .5s forwards;
+}
+
+@keyframes flameOff {
+
+    to {
+        opacity: 0;
+
+        transform:
+            translateY(-25px)
+            scale(0);
+    }
+}
+
+
+/* CAKE */
+
+.cake {
+
+    position: absolute;
+
+    width: 300px;
+
+    height: 150px;
+
+    left: 50%;
+
+    bottom: 20px;
+
+    transform: translateX(-50%);
+}
+
+.cake-top {
+
+    position: absolute;
+
+    top: 0;
+
+    width: 300px;
+
+    height: 70px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            #ff9fc5,
+            #ed659c
+        );
+
+    display: flex;
+
+    justify-content: space-around;
+
+    align-items: center;
+
+    color: white;
+
+    font-size: 20px;
+}
+
+.icing {
+
+    position: absolute;
+
+    top: 45px;
+
+    width: 300px;
+
+    height: 35px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    z-index: 2;
+}
+
+.cake-body {
+
+    position: absolute;
+
+    top: 50px;
+
+    left: 15px;
+
+    width: 270px;
+
+    height: 90px;
+
+    border-radius: 10px 10px 20px 20px;
+
+    background:
+        linear-gradient(
+            #dc4f84,
+            #9f2c60
+        );
+
+    display: flex;
+
+    justify-content: space-around;
+
+    align-items: center;
+}
+
+.cake-body span {
+
+    width: 15px;
+
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: #ffd76a;
+
+    box-shadow: 0 0 10px #ffd76a;
+}
+
+.cake-bottom {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 25px;
+
+    width: 250px;
+
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: #ffd76a;
+}
+
+
+/* BLOW BUTTON */
+
+.blow-btn {
+
+    padding: 14px 30px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff70ad,
+            #d83d80
+        );
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(255,70,150,.4);
+
+    transition: .3s;
+}
+
+.blow-btn:hover {
+
+    transform: scale(1.06);
+}
+
+
+/* =========================================
+   FINAL SCREEN
+========================================= */
+
+.final-screen {
+
+    background:
+        radial-gradient(
+            circle,
+            #9b3d6d,
+            #260e20
+        );
+}
+
+.final-content {
+
+    text-align: center;
+
+    width: min(90%, 650px);
+
+    animation: finalIn 1.5s ease;
+}
+
+.final-hearts {
+
+    font-size: 60px;
+
+    animation: heartBeat 1s infinite;
+}
+
+.final-content h1 {
+
+    font-size: clamp(38px, 9vw, 80px);
+
+    text-shadow:
+        0 0 15px #ff7ab6,
+        0 0 40px #ff3d98;
+}
+
+.final-content h2 {
+
+    margin-top: 10px;
+
+    color: #ffd76a;
+
+    letter-spacing: 4px;
+
+    font-size: clamp(18px, 4vw, 30px);
+}
+
+.final-message {
+
+    margin-top: 20px;
+
+    line-height: 1.8;
+
+    font-size: 18px;
+
+    color: #eee;
+}
+
+.celebrate {
+
+    margin-top: 30px;
+
+    font-size: 28px;
+
+    animation: celebration 1.5s infinite alternate;
+}
+
+@keyframes celebration {
+
+    to {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes finalIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    .arrow {
+        left: 12%;
+    }
+
+    .heart {
+        font-size: 140px;
+    }
+
+    .tree {
+        transform: scale(.8);
+        bottom: 5%;
+    }
+
+    .cake-area {
+        transform: scale(.8);
+        margin-top: 5px;
+        margin-bottom: -20px;
+    }
+
+    .wish-card {
+        padding: 35px 20px;
+    }
+
+    .little-text {
+        font-size: 15px;
+    }
+}
+/* =====================================================
+   PREMIUM TREE SCREEN ANIMATIONS
+===================================================== */
+
+/* ------------------------------
+   TREE GROWING
+------------------------------ */
+
+.tree {
+    transform-origin: bottom center;
+    animation: treeGrow 2.8s cubic-bezier(.16, 1, .3, 1) forwards;
+}
+
+@keyframes treeGrow {
+    0% {
+        opacity: 0;
+        transform: scaleY(0.05) scaleX(0.7);
+    }
+
+    35% {
+        opacity: 1;
+    }
+
+    70% {
+        transform: scaleY(1.04) scaleX(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleY(1) scaleX(1);
+    }
+}
+
+
+/* ------------------------------
+   TRUNK GLOW
+------------------------------ */
+
+.tree .trunk {
+    animation:
+        trunkAppear 2s ease-out forwards,
+        trunkGlow 3s ease-in-out 2s infinite;
+}
+
+@keyframes trunkAppear {
+    0% {
+        transform: scaleY(0);
+        transform-origin: bottom center;
+        opacity: 0;
+    }
+
+    100% {
+        transform: scaleY(1);
+        transform-origin: bottom center;
+        opacity: 1;
+    }
+}
+
+@keyframes trunkGlow {
+    0%, 100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.25)
+                drop-shadow(0 0 8px rgba(255, 150, 80, .25));
+    }
+}
+
+
+/* ------------------------------
+   BRANCHES GROW ONE BY ONE
+------------------------------ */
+
+.tree .branch {
+    transform-origin: bottom center;
+    opacity: 0;
+}
+
+.tree .branch1 {
+    animation: branchGrow 1s ease-out 0.8s forwards;
+}
+
+.tree .branch2 {
+    animation: branchGrow 1s ease-out 1.05s forwards;
+}
+
+.tree .branch3 {
+    animation: branchGrow 1s ease-out 1.3s forwards;
+}
+
+.tree .branch4 {
+    animation: branchGrow 1s ease-out 1.55s forwards;
+}
+
+@keyframes branchGrow {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ------------------------------
+   NATURAL BRANCH MOVEMENT
+------------------------------ */
+
+.tree .branch1 {
+    animation:
+        branchGrow 1s ease-out 0.8s forwards,
+        branchSway1 4s ease-in-out 2.5s infinite;
+}
+
+.tree .branch2 {
+    animation:
+        branchGrow 1s ease-out 1.05s forwards,
+        branchSway2 4.5s ease-in-out 2.7s infinite;
+}
+
+.tree .branch3 {
+    animation:
+        branchGrow 1s ease-out 1.3s forwards,
+        branchSway1 5s ease-in-out 2.9s infinite;
+}
+
+.tree .branch4 {
+    animation:
+        branchGrow 1s ease-out 1.55s forwards,
+        branchSway2 4.2s ease-in-out 3.1s infinite;
+}
+
+@keyframes branchSway1 {
+    0%, 100% {
+        rotate: 0deg;
+    }
+
+    50% {
+        rotate: 1.5deg;
+    }
+}
+
+@keyframes branchSway2 {
+    0%, 100% {
+        rotate: 0deg;
+    }
+
+    50% {
+        rotate: -1.5deg;
+    }
+}
+
+
+/* ------------------------------
+   HEARTS APPEAR ONE BY ONE
+------------------------------ */
+
+.tree-heart {
+    opacity: 0;
+    transform: scale(0);
+
+    animation:
+        heartAppear .8s cubic-bezier(.17,.89,.32,1.49) forwards,
+        heartFloat 3s ease-in-out infinite;
+}
+
+/* Different appearance timings */
+
+.tree-heart.h1  { animation-delay: 2.0s, 3.0s; }
+.tree-heart.h2  { animation-delay: 2.15s, 3.2s; }
+.tree-heart.h3  { animation-delay: 2.30s, 3.4s; }
+.tree-heart.h4  { animation-delay: 2.45s, 3.6s; }
+.tree-heart.h5  { animation-delay: 2.60s, 3.8s; }
+.tree-heart.h6  { animation-delay: 2.75s, 4.0s; }
+.tree-heart.h7  { animation-delay: 2.90s, 4.2s; }
+.tree-heart.h8  { animation-delay: 3.05s, 4.4s; }
+.tree-heart.h9  { animation-delay: 3.20s, 4.6s; }
+.tree-heart.h10 { animation-delay: 3.35s, 4.8s; }
+.tree-heart.h11 { animation-delay: 3.50s, 5.0s; }
+.tree-heart.h12 { animation-delay: 3.65s, 5.2s; }
+
+
+@keyframes heartAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-20deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.25) rotate(8deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+
+@keyframes heartFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-7px) scale(1.06);
+    }
+}
+
+
+/* ------------------------------
+   HEART GLOW
+------------------------------ */
+
+.tree-heart {
+    text-shadow:
+        0 0 5px rgba(255, 105, 180, .7),
+        0 0 12px rgba(255, 105, 180, .45),
+        0 0 20px rgba(255, 105, 180, .25);
+}
+
+
+/* ------------------------------
+   FLOATING TREE PARTICLES
+------------------------------ */
+
+.tree-particle {
+    position: absolute;
+    z-index: 50;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation-name: magicalParticle;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+
+    text-shadow:
+        0 0 6px currentColor,
+        0 0 12px currentColor;
+}
+
+@keyframes magicalParticle {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate3d(0, 15px, 0)
+            scale(.3)
+            rotate(0deg);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+        transform:
+            translate3d(15px, -25px, 0)
+            scale(1)
+            rotate(90deg);
+    }
+
+    80% {
+        opacity: .7;
+        transform:
+            translate3d(-10px, -55px, 0)
+            scale(.7)
+            rotate(180deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate3d(20px, -90px, 0)
+            scale(.2)
+            rotate(360deg);
+    }
+}
+
+
+/* ------------------------------
+   TREE SCREEN SOFT LIGHT
+------------------------------ */
+
+.tree-screen::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    left: 50%;
+    top: 55%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 80, 160, .10) 0%,
+            rgba(255, 80, 160, .04) 35%,
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+    animation: treeLightPulse 4s ease-in-out infinite;
+}
+
+@keyframes treeLightPulse {
+
+    0%, 100% {
+        opacity: .5;
+        transform: translate(-50%, -50%) scale(.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
+
+/* ------------------------------
+   TITLE GLOW
+------------------------------ */
+
+.tree-content h1 {
+    animation:
+        titleReveal 1.5s ease-out .5s both,
+        titleGlow 3s ease-in-out 2s infinite;
+}
+
+@keyframes titleReveal {
+
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(8px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes titleGlow {
+
+    0%, 100% {
+        text-shadow:
+            0 0 5px rgba(255, 100, 180, .2);
+    }
+
+    50% {
+        text-shadow:
+            0 0 12px rgba(255, 100, 180, .6),
+            0 0 30px rgba(255, 100, 180, .25);
+    }
+}
+
+
+/* ------------------------------
+   "AND... MAKE IT COUNT"
+------------------------------ */
+
+.tree-small {
+    animation: smallTextReveal 1.2s ease-out .2s both;
+}
+
+@keyframes smallTextReveal {
+
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+        letter-spacing: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: normal;
+    }
+}
